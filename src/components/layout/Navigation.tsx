@@ -1,12 +1,14 @@
 /**
  * NOVEXA — Navigation Component
- * Sticky, glassmorphism navigation bar with dynamic dark/light text color adaptation.
+ * Sticky, glassmorphic navigation bar with dynamic dark/light text color adaptation.
+ * Left aligned pure serif wordmark 'NOVEXA', centered navigation links, right WhatsApp CTA.
+ * Direct link to '/legal' (NO dropdowns as specified in Legal Center rules).
  */
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RiWhatsappLine, RiMenuLine, RiCloseLine } from 'react-icons/ri';
 import { useNavScroll } from '@/hooks/useNavScroll';
-import { NAV_LINKS, getWhatsAppUrl } from '@/utils/constants';
+import { BRAND, getWhatsAppUrl } from '@/utils/constants';
 import {
   menuOverlay,
   menuItem,
@@ -14,6 +16,15 @@ import {
   navReveal,
   logoReveal,
 } from '@/utils/animations';
+
+const navLinks = [
+  { label: 'About',   href: '/about' },
+  { label: 'Services',href: '/services' },
+  { label: 'Work',    href: '/portfolio' },
+  { label: 'Process', href: '/process' },
+  { label: 'Legal',   href: '/legal' },
+  { label: 'Contact', href: '/contact' },
+];
 
 export const Navigation: React.FC = () => {
   const { isScrolled } = useNavScroll(40);
@@ -54,9 +65,7 @@ export const Navigation: React.FC = () => {
     document.body.style.overflow = '';
   };
 
-  // Header color context:
-  // When at top of page (!isScrolled) -> text is #F8F6F2 over dark hero section
-  // When scrolled down (isScrolled) -> text is var(--color-primary) #0D1117 over light glass backdrop
+  // Text color based on scroll context
   const textColor = isScrolled ? 'var(--color-primary)' : '#F8F6F2';
   const activeColor = 'var(--color-accent)';
 
@@ -72,8 +81,8 @@ export const Navigation: React.FC = () => {
         style={{
           transition: 'background-color 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), backdrop-filter 400ms ease, box-shadow 400ms ease',
           backgroundColor: isScrolled ? 'rgba(248, 246, 242, 0.92)' : 'transparent',
-          backdropFilter: isScrolled ? 'blur(12px)' : 'none',
-          WebkitBackdropFilter: isScrolled ? 'blur(12px)' : 'none',
+          backdropFilter: isScrolled ? 'blur(16px)' : 'none',
+          WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
           boxShadow: isScrolled ? '0 1px 0 rgba(13, 17, 23, 0.08)' : 'none',
         }}
       >
@@ -83,7 +92,7 @@ export const Navigation: React.FC = () => {
             role="navigation"
             aria-label="Main navigation"
           >
-            {/* Pure Typographic Wordmark */}
+            {/* Left-Aligned Pure Serif Wordmark Logo (No Icons) */}
             <motion.a
               href="/"
               variants={logoReveal}
@@ -95,7 +104,7 @@ export const Navigation: React.FC = () => {
               <span
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: '1.65rem',
+                  fontSize: '1.75rem',
                   fontWeight: 900,
                   letterSpacing: '0.14em',
                   color: textColor,
@@ -108,14 +117,14 @@ export const Navigation: React.FC = () => {
               </span>
             </motion.a>
 
-            {/* Desktop Nav Links */}
+            {/* Centered Desktop Nav Links */}
             <ul
               className="hidden lg:flex items-center gap-10 list-none"
               role="menubar"
               aria-label="Site sections"
               style={{ margin: 0, padding: 0 }}
             >
-              {NAV_LINKS.map((link, i) => {
+              {navLinks.map((link, i) => {
                 const active = isLinkActive(link.href);
                 return (
                   <li key={link.href} role="none">
@@ -161,7 +170,7 @@ export const Navigation: React.FC = () => {
               })}
             </ul>
 
-            {/* Desktop CTA */}
+            {/* Right-Aligned Desktop WhatsApp CTA */}
             <div className="hidden lg:flex items-center gap-4">
               <motion.a
                 href={getWhatsAppUrl('consultation')}
@@ -178,7 +187,7 @@ export const Navigation: React.FC = () => {
                 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
+                transition={{ delay: 0.4, duration: 0.4 }}
                 whileHover={{ y: -1, backgroundColor: isScrolled ? 'var(--color-secondary)' : 'rgba(248, 246, 242, 0.2)' }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -222,7 +231,6 @@ export const Navigation: React.FC = () => {
             aria-modal="true"
             aria-label="Mobile Navigation Overlay"
           >
-            {/* Background texture */}
             <div
               aria-hidden="true"
               style={{
@@ -244,7 +252,7 @@ export const Navigation: React.FC = () => {
               className="flex flex-col gap-6 list-none"
               style={{ margin: 0, padding: 0, position: 'relative', zIndex: 2 }}
             >
-              {NAV_LINKS.map((link) => {
+              {navLinks.map((link) => {
                 const active = isLinkActive(link.href);
                 return (
                   <motion.li key={link.href} variants={menuItem}>
@@ -287,7 +295,7 @@ export const Navigation: React.FC = () => {
               </a>
 
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'rgba(248,246,242,0.4)', textAlign: 'center', margin: 0 }}>
-                Novexaagency27@gmail.com • Surat, India
+                {BRAND.email} • Surat, India
               </p>
             </motion.div>
           </motion.div>

@@ -9,41 +9,37 @@ import {
   RiArrowUpLine,
   RiInstagramLine,
   RiMailLine,
-  RiLinkedinFill,
+  RiPhoneLine,
 } from 'react-icons/ri';
 import { BRAND, getWhatsAppUrl } from '@/utils/constants';
 
 // ── Data ──────────────────────────────────────────────────────
-const footerNav = [
-  { label: 'Home',     href: '/' },
+const footerCompanyNav = [
+  { label: 'About',    href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Work',     href: '/portfolio' },
-  { label: 'About',    href: '/about' },
-  { label: 'Contact',  href: '/contact' },
+  { label: 'Process',  href: '/process' },
 ];
 
-const footerServices = [
-  { label: 'Brand Identity',  href: '/services#brand-identity' },
-  { label: 'Website Design',  href: '/services#website-design' },
-  { label: 'UI/UX Design',    href: '/services#ui-ux' },
-  { label: 'Video Editing',   href: '/services#video-editing' },
-  { label: 'Social Media',    href: '/services#social-media' },
-  { label: 'Packaging',       href: '/services#packaging-design' },
+const footerServicesNav = [
+  { label: 'Brand Identity',      href: '/services#brand-identity' },
+  { label: 'Website Design',      href: '/services#website-design' },
+  { label: 'Website Development', href: '/services#website-development' },
+  { label: 'Video Editing',       href: '/services#video-editing' },
+  { label: 'Social Media',        href: '/services#social-media-management' },
+  { label: 'Graphic Design',      href: '/services#graphic-design' },
 ];
 
-const footerContact = [
-  { label: BRAND.email,      href: `mailto:${BRAND.email}`,  external: false },
-  { label: BRAND.phone,      href: `tel:${BRAND.phone}`,     external: false },
-  { label: 'WhatsApp',       href: getWhatsAppUrl('default'), external: true },
-  { label: 'Instagram',      href: BRAND.instagram,           external: true },
-  { label: 'Surat, India',   href: '/contact',               external: false },
+const footerLegalNav = [
+  { label: 'Legal Center', href: '/legal' },
+  { label: 'Contact Us',   href: '/contact' },
 ];
 
 const socialIcons = [
   { label: 'Instagram', href: BRAND.instagram, icon: <RiInstagramLine size={16} /> },
   { label: 'WhatsApp',  href: getWhatsAppUrl('default'), icon: <RiWhatsappLine size={16} /> },
   { label: 'Email',     href: `mailto:${BRAND.email}`, icon: <RiMailLine size={16} /> },
-  { label: 'LinkedIn',  href: 'https://linkedin.com', icon: <RiLinkedinFill size={16} /> },
+  { label: 'Phone',     href: `tel:${BRAND.phone}`, icon: <RiPhoneLine size={16} /> },
 ];
 
 // ── Link Component with underline reveal ──
@@ -71,7 +67,7 @@ const FooterLink: React.FC<{
           ? accent
             ? '#25D366'
             : '#F8F6F2'
-          : 'rgba(248,246,242,0.5)',
+          : 'rgba(248,246,242,0.55)',
         textDecoration: 'none',
         transition: 'color 240ms cubic-bezier(0.25,0.46,0.45,0.94), transform 240ms cubic-bezier(0.25,0.46,0.45,0.94)',
         transform: hovered ? 'translateX(4px)' : 'translateX(0)',
@@ -104,8 +100,8 @@ const ColHead: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       fontWeight: 700,
       letterSpacing: '0.14em',
       textTransform: 'uppercase',
-      color: 'rgba(248,246,242,0.25)',
-      marginBottom: '1.75rem',
+      color: 'rgba(248,246,242,0.3)',
+      marginBottom: '1.5rem',
     }}
   >
     {children}
@@ -233,7 +229,7 @@ export const Footer: React.FC = () => {
             NOVEXA is a premier creative agency partnering with ambitious brands globally to craft unforgettable visual identities and high-performing digital systems.
           </motion.p>
 
-          {/* Large CTA button */}
+          {/* Large WhatsApp CTA button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -286,12 +282,12 @@ export const Footer: React.FC = () => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
+              gridTemplateColumns: '1.4fr 1fr 1.2fr 1fr',
               gap: '3rem',
             }}
             className="footer-grid"
           >
-            {/* Column 1: NOVEXA Brand */}
+            {/* Column 1: Company Statement & Contacts */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -323,16 +319,32 @@ export const Footer: React.FC = () => {
                   fontFamily: 'var(--font-body)',
                   fontSize: '0.875rem',
                   lineHeight: 1.75,
-                  color: 'rgba(248,246,242,0.45)',
+                  color: 'rgba(248,246,242,0.5)',
                   marginBottom: '1.5rem',
-                  maxWidth: '240px',
+                  maxWidth: '260px',
                 }}
               >
-                Building Brands. Driving Growth. Creating Impact. A premium creative marketing studio.
+                Building Brands. Driving Growth. Creating Impact. A premier creative marketing studio.
               </p>
 
+              {/* Direct Contact Links */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                <a
+                  href={`mailto:${BRAND.email}`}
+                  style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'rgba(248,246,242,0.7)', textDecoration: 'none' }}
+                >
+                  {BRAND.email}
+                </a>
+                <a
+                  href={`tel:${BRAND.phone}`}
+                  style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'rgba(248,246,242,0.7)', textDecoration: 'none' }}
+                >
+                  {BRAND.phone}
+                </a>
+              </div>
+
               {/* Social Icons */}
-              <div style={{ display: 'flex', gap: '0.6rem', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', gap: '0.6rem' }}>
                 {socialIcons.map((s) => (
                   <motion.a
                     key={s.label}
@@ -342,9 +354,9 @@ export const Footer: React.FC = () => {
                     aria-label={`NOVEXA ${s.label}`}
                     whileHover={{ y: -3, backgroundColor: 'rgba(248,246,242,0.15)' }}
                     style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '4px',
+                      width: '34px',
+                      height: '34px',
+                      borderRadius: '6px',
                       backgroundColor: 'rgba(248,246,242,0.06)',
                       border: '1px solid rgba(248,246,242,0.12)',
                       display: 'flex',
@@ -358,41 +370,6 @@ export const Footer: React.FC = () => {
                   </motion.a>
                 ))}
               </div>
-
-              {/* Available Badge */}
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.4rem 0.875rem',
-                  border: '1px solid rgba(248,246,242,0.12)',
-                  borderRadius: '9999px',
-                }}
-              >
-                <span
-                  style={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    backgroundColor: '#25D366',
-                    display: 'inline-block',
-                    flexShrink: 0,
-                  }}
-                />
-                <span
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '0.625rem',
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(248,246,242,0.35)',
-                  }}
-                >
-                  Available for Projects
-                </span>
-              </div>
             </motion.div>
 
             {/* Column 2: Navigation */}
@@ -402,9 +379,9 @@ export const Footer: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.07 }}
             >
-              <ColHead>Navigation</ColHead>
+              <ColHead>Company</ColHead>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
-                {footerNav.map((link) => (
+                {footerCompanyNav.map((link) => (
                   <li key={link.href}>
                     <FooterLink href={link.href}>{link.label}</FooterLink>
                   </li>
@@ -421,7 +398,7 @@ export const Footer: React.FC = () => {
             >
               <ColHead>Services</ColHead>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
-                {footerServices.map((s) => (
+                {footerServicesNav.map((s) => (
                   <li key={s.href}>
                     <FooterLink href={s.href}>{s.label}</FooterLink>
                   </li>
@@ -429,22 +406,32 @@ export const Footer: React.FC = () => {
               </ul>
             </motion.div>
 
-            {/* Column 4: Contact */}
+            {/* Column 4: Legal & Contact */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.21 }}
             >
-              <ColHead>Contact</ColHead>
+              <ColHead>Legal &amp; Contact</ColHead>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
-                {footerContact.map((c) => (
+                {footerLegalNav.map((c) => (
                   <li key={c.href}>
-                    <FooterLink href={c.href} external={c.external} accent={c.label === 'WhatsApp'}>
+                    <FooterLink href={c.href}>
                       {c.label}
                     </FooterLink>
                   </li>
                 ))}
+                <li>
+                  <FooterLink href={getWhatsAppUrl('default')} external accent>
+                    WhatsApp Chat
+                  </FooterLink>
+                </li>
+                <li>
+                  <FooterLink href={BRAND.instagram} external>
+                    Instagram
+                  </FooterLink>
+                </li>
               </ul>
             </motion.div>
           </div>
@@ -467,19 +454,19 @@ export const Footer: React.FC = () => {
               style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: '0.75rem',
-                color: 'rgba(248,246,242,0.3)',
+                color: 'rgba(248,246,242,0.35)',
                 letterSpacing: '0.04em',
                 margin: 0,
               }}
             >
-              © {year} NOVEXA
+              © {year} NOVEXA. All Rights Reserved. Surat, India.
             </p>
 
             <p
               style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: '0.75rem',
-                color: 'rgba(248,246,242,0.3)',
+                color: 'rgba(248,246,242,0.35)',
                 letterSpacing: '0.04em',
                 margin: 0,
               }}
@@ -487,7 +474,7 @@ export const Footer: React.FC = () => {
               Crafted by NOVEXA
             </p>
 
-            {/* Back to Top */}
+            {/* Back to Top Button */}
             <motion.button
               onClick={scrollToTop}
               onMouseEnter={() => setTopBtnHovered(true)}
@@ -499,7 +486,7 @@ export const Footer: React.FC = () => {
                 color: 'var(--color-accent)',
                 fontFamily: 'var(--font-body)',
                 fontSize: '0.75rem',
-                fontWeight: 600,
+                fontWeight: 700,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
@@ -526,7 +513,7 @@ export const Footer: React.FC = () => {
           .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 600px) {
-          .footer-grid { grid-template-columns: 1fr !important; text-align: center; }
+          .footer-grid { grid-template-columns: 1fr !important; text-align: left; }
         }
       `}</style>
     </footer>

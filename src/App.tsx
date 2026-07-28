@@ -18,8 +18,24 @@ const ProjectDetailPage = lazy(() => import('@/pages/ProjectDetailPage').then((m
 const ProcessPage = lazy(() => import('@/pages/ProcessPage').then((m) => ({ default: m.ProcessPage })));
 const ContactPage = lazy(() => import('@/pages/ContactPage').then((m) => ({ default: m.ContactPage })));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
+const LegalPage = lazy(() => import('@/pages/LegalPage').then((m) => ({ default: m.LegalPage })));
 
-const knownRoutes = ['/', '/about', '/services', '/portfolio', '/work', '/process', '/contact', '/faq'];
+const knownRoutes = [
+  '/',
+  '/about',
+  '/services',
+  '/portfolio',
+  '/work',
+  '/process',
+  '/legal',
+  '/contact',
+  '/faq',
+  '/terms-and-conditions',
+  '/privacy-policy',
+  '/refund-policy',
+  '/cookie-policy',
+  '/disclaimer',
+];
 
 // Page loading fallback
 const PageFallback: React.FC = () => (
@@ -210,6 +226,13 @@ export const App: React.FC = () => {
       case '/contact':
       case '/faq':
         return <ContactPage />;
+      case '/legal':
+      case '/terms-and-conditions':
+      case '/privacy-policy':
+      case '/refund-policy':
+      case '/cookie-policy':
+      case '/disclaimer':
+        return <LegalPage />;
       case '/':
         return <HomePage />;
       default:
