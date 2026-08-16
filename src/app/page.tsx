@@ -7,8 +7,41 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ServiceAccordion } from "@/components/ServiceAccordion";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { FounderCard } from "@/components/FounderCard";
+import type { Metadata } from "next";
 import { projectsData } from "@/lib/data/projects";
 import { siteConfig } from "@/lib/data/siteConfig";
+
+export const metadata: Metadata = {
+  title: "NOVEXA | Creative Digital Agency for Design, Social Media & Websites",
+  description:
+    "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
+  alternates: {
+    canonical: "https://novexaagency.com",
+  },
+  openGraph: {
+    title: "NOVEXA | Creative Digital Agency for Design, Social Media & Websites",
+    description:
+      "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
+    url: "https://novexaagency.com",
+    siteName: "NOVEXA",
+    images: [
+      {
+        url: "/assets/work/ui-ux/anaqah page.png",
+        width: 1200,
+        height: 630,
+        alt: "NOVEXA Creative Digital Agency",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NOVEXA | Creative Digital Agency for Design, Social Media & Websites",
+    description:
+      "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
+    images: ["/assets/work/ui-ux/anaqah page.png"],
+  },
+};
 
 export default function HomePage() {
   const featuredProjects = projectsData.slice(0, 4);

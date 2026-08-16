@@ -8,6 +8,39 @@ import { ProjectCard } from "@/components/ProjectCard";
 export default function WorkPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
 
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Work & Portfolio — NOVEXA",
+    url: "https://novexaagency.com/work",
+    description:
+      "Explore selected work and case studies by NOVEXA across UI/UX, brand identity, graphic design, social media content, and motion video.",
+    provider: {
+      "@type": "Organization",
+      name: "NOVEXA AGENCY",
+      url: "https://novexaagency.com",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://novexaagency.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Work",
+        item: "https://novexaagency.com/work",
+      },
+    ],
+  };
+
   const categories = ["ALL", "UI/UX", "LOGO", "GRAPHIC DESIGN", "SOCIAL MEDIA", "VIDEO"];
 
   const filteredProjects =
@@ -20,6 +53,14 @@ export default function WorkPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-16 space-y-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Header */}
       <div className="space-y-6 max-w-4xl">
         <span className="font-mono text-xs text-gold tracking-widest uppercase block">

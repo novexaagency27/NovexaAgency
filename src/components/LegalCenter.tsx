@@ -32,15 +32,24 @@ export function LegalCenter() {
   const [mobileTocOpen, setMobileTocOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 220;
+    let ticking = false;
 
-      for (let i = tocItems.length - 1; i >= 0; i--) {
-        const el = document.getElementById(tocItems[i].id);
-        if (el && el.offsetTop <= scrollPosition) {
-          setActiveId(tocItems[i].id);
-          break;
-        }
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY + 220;
+
+          for (let i = tocItems.length - 1; i >= 0; i--) {
+            const el = document.getElementById(tocItems[i].id);
+            if (el && el.offsetTop <= scrollPosition) {
+              const nextId = tocItems[i].id;
+              setActiveId((prev) => (prev !== nextId ? nextId : prev));
+              break;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

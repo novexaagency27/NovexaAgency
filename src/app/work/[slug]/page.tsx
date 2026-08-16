@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, ArrowLeft, Play } from "lucide-react";
+import type { Metadata } from "next";
 import { projectsData } from "@/lib/data/projects";
 
 export function generateStaticParams() {
@@ -11,12 +12,44 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const project = projectsData.find((p) => p.slug === params.slug);
   if (!project) return {};
+  
+  const title = `${project.title} | NOVEXA`;
+  const description = project.summary;
+  const url = `https://novexaagency.com/work/${project.slug}`;
+  const imageUrl = project.thumbnail.startsWith("http")
+    ? project.thumbnail
+    : `https://novexaagency.com${project.thumbnail}`;
+
   return {
-    title: `${project.title} — NOVEXA AGENCY`,
-    description: project.summary,
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "NOVEXA",
+      type: "article",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${project.title} — NOVEXA Case Study`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -31,8 +64,65 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
   const nextProject = projectsData[(projectIndex + 1) % projectsData.length];
   const isVideo = project.type === "video" && !!project.videoSrc;
 
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    headline: project.subtitle,
+    description: project.summary,
+    image: project.thumbnail.startsWith("http")
+      ? project.thumbnail
+      : `https://novexaagency.com${project.thumbnail}`,
+    creator: {
+      "@type": "Organization",
+      name: "NOVEXA AGENCY",
+      url: "https://novexaagency.com",
+    },
+    provider: {
+      "@type": "Organization",
+      name: "NOVEXA AGENCY",
+      url: "https://novexaagency.com",
+    },
+    url: `https://novexaagency.com/work/${project.slug}`,
+    genre: project.category,
+    dateCreated: project.year,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://novexaagency.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Work",
+        item: "https://novexaagency.com/work",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: `https://novexaagency.com/work/${project.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-16 space-y-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Back Link */}
       <Link
         href="/work"
@@ -71,13 +161,14 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
             muted
             loop
             playsInline
+            preload="metadata"
             poster={project.thumbnail}
             className="w-full h-full object-cover"
           />
         ) : (
           <Image
             src={project.heroImage}
-            alt={project.title}
+            alt={`${project.title} — NOVEXA Case Study Showcase`}
             fill
             priority
             sizes="100vw"
@@ -182,7 +273,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
               >
                 <Image
                   src={img}
-                  alt={`${project.title} asset ${gIdx + 1}`}
+                  alt={`${project.title} — NOVEXA Design Presentation Asset ${gIdx + 1}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-105"

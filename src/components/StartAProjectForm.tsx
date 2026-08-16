@@ -137,14 +137,23 @@ export function StartAProjectForm() {
   };
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 250;
-      for (let i = progressSteps.length - 1; i >= 0; i--) {
-        const el = document.getElementById(progressSteps[i].id);
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveStepId(progressSteps[i].id);
-          break;
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPos = window.scrollY + 250;
+          for (let i = progressSteps.length - 1; i >= 0; i--) {
+            const el = document.getElementById(progressSteps[i].id);
+            if (el && el.offsetTop <= scrollPos) {
+              const nextId = progressSteps[i].id;
+              setActiveStepId((prev) => (prev !== nextId ? nextId : prev));
+              break;
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

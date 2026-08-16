@@ -1,16 +1,92 @@
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { servicesData } from "@/lib/data/services";
 
-export const metadata = {
-  title: "Services — NOVEXA AGENCY",
-  description: "Explore NOVEXA's core capabilities across Brand Strategy, UI/UX Design, Website Development, App Engineering, and Digital Experiences.",
+export const metadata: Metadata = {
+  title: "Services | NOVEXA Creative Digital Agency",
+  description:
+    "Explore NOVEXA's core agency capabilities across brand strategy, UI/UX design, website development, social media, and digital experiences.",
+  alternates: {
+    canonical: "https://novexaagency.com/services",
+  },
+  openGraph: {
+    title: "Services | NOVEXA Creative Digital Agency",
+    description:
+      "Explore NOVEXA's core agency capabilities across brand strategy, UI/UX design, website development, social media, and digital experiences.",
+    url: "https://novexaagency.com/services",
+    siteName: "NOVEXA",
+    images: [
+      {
+        url: "/assets/work/ui-ux/anaqah page.png",
+        width: 1200,
+        height: 630,
+        alt: "NOVEXA Services & Capabilities",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services | NOVEXA Creative Digital Agency",
+    description:
+      "Explore NOVEXA's core agency capabilities across brand strategy, UI/UX design, website development, social media, and digital experiences.",
+    images: ["/assets/work/ui-ux/anaqah page.png"],
+  },
 };
 
 export default function ServicesPage() {
+  const servicesSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "NOVEXA Services & Capabilities",
+    itemListElement: servicesData.map((service, index) => ({
+      "@type": "Service",
+      position: index + 1,
+      name: service.title,
+      description: service.description,
+      provider: {
+        "@type": "Organization",
+        name: "NOVEXA AGENCY",
+        url: "https://novexaagency.com",
+      },
+      offers: {
+        "@type": "Offer",
+        serviceType: service.title,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://novexaagency.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: "https://novexaagency.com/services",
+      },
+    ],
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-16 space-y-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Header */}
       <div className="space-y-6 max-w-3xl">
         <span className="font-mono text-xs text-gold tracking-widest uppercase block">

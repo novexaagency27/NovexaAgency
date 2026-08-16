@@ -12,22 +12,24 @@ interface ProjectCardProps {
   className?: string;
 }
 
-export function ProjectCard({
+export const ProjectCard = React.memo(function ProjectCard({
   project,
   aspectRatio = "aspect-[4/3]",
   className = "",
 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const isVideo = project.type === "video" && !!project.videoSrc;
 
   const handleMouseEnter = () => {
     setIsHovered(true);
-    if (isVideo && videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay policy fallback
-      });
+    if (isVideo) {
+      if (!videoLoaded) setVideoLoaded(true);
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => {});
+      }
     }
   };
 
@@ -51,7 +53,7 @@ export function ProjectCard({
         {/* Poster Image */}
         <Image
           src={project.thumbnail}
-          alt={project.title}
+          alt={`${project.title} — NOVEXA Case Study (${project.category})`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className={`object-cover object-center transition-all duration-700 ease-out group-hover:scale-105 ${
@@ -59,8 +61,8 @@ export function ProjectCard({
           }`}
         />
 
-        {/* Video Preview on Hover (Lazy-Loaded) */}
-        {isVideo && (
+        {/* Video Preview on Hover (Lazy-Loaded on demand) */}
+        {isVideo && (videoLoaded || isHovered) && (
           <video
             ref={videoRef}
             src={project.videoSrc}
@@ -105,4 +107,4 @@ export function ProjectCard({
       </div>
     </Link>
   );
-}
+});

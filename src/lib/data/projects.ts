@@ -36,9 +36,9 @@ export const projectsData: Project[] = [
     heroImage: "/assets/work/ui-ux/anaqah page.png",
     gallery: [
       "/assets/work/ui-ux/anaqah 1.jpg",
-      "/assets/work/ui-ux/anaqah 2.png",
+      "/assets/work/ui-ux/anaqah  2.png",
       "/assets/work/ui-ux/anaqah 5.png",
-      "/assets/work/ui-ux/anaqah  6.11.jpg",
+      "/assets/work/ui-ux/anaqah 6.11.jpg",
       "/assets/work/ui-ux/anaqah  3.jpg",
     ],
     summary:
@@ -103,7 +103,7 @@ export const projectsData: Project[] = [
     heroImage: "/assets/work/logo/hand tag nirvaan.jpg",
     gallery: [
       "/assets/work/logo/MAIN.jpg",
-      "/assets/work/branding/busniess card main.jpg",
+      "/assets/work/branding/busniess  card main.jpg",
       "/assets/work/logo/sss.jpg",
     ],
     summary:

@@ -1,17 +1,86 @@
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { FounderCard } from "@/components/FounderCard";
 import { siteConfig } from "@/lib/data/siteConfig";
 
-export const metadata = {
-  title: "About — NOVEXA AGENCY",
-  description: "Learn about NOVEXA AGENCY, our founders Hetvi & Krish, our philosophy, and our commitment to design excellence.",
+export const metadata: Metadata = {
+  title: "About NOVEXA | Creative Digital Agency",
+  description:
+    "Learn about NOVEXA, our founders Hetvi & Krish, our agency philosophy, and our commitment to design and technical excellence.",
+  alternates: {
+    canonical: "https://novexaagency.com/about",
+  },
+  openGraph: {
+    title: "About NOVEXA | Creative Digital Agency",
+    description:
+      "Learn about NOVEXA, our founders Hetvi & Krish, our agency philosophy, and our commitment to design and technical excellence.",
+    url: "https://novexaagency.com/about",
+    siteName: "NOVEXA",
+    images: [
+      {
+        url: "/assets/work/ui-ux/anaqah page.png",
+        width: 1200,
+        height: 630,
+        alt: "About NOVEXA Creative Digital Agency",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About NOVEXA | Creative Digital Agency",
+    description:
+      "Learn about NOVEXA, our founders Hetvi & Krish, our agency philosophy, and our commitment to design and technical excellence.",
+    images: ["/assets/work/ui-ux/anaqah page.png"],
+  },
 };
 
 export default function AboutPage() {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About NOVEXA",
+    url: "https://novexaagency.com/about",
+    description:
+      "Learn about NOVEXA, our founders Hetvi & Krish, our agency philosophy, and our commitment to design and technical excellence.",
+    mainEntity: {
+      "@type": "Organization",
+      name: "NOVEXA AGENCY",
+      url: "https://novexaagency.com",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://novexaagency.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "About",
+        item: "https://novexaagency.com/about",
+      },
+    ],
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 py-8 md:py-16 space-y-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Header */}
       <div className="space-y-6 max-w-4xl">
         <span className="font-mono text-xs text-gold tracking-widest uppercase block">
