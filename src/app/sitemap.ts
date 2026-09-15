@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/legal",
     "/start-a-project",
     "/graphic-design",
+    "/branding",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
