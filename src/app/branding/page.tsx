@@ -24,16 +24,16 @@ import { projectsData } from "@/lib/data/projects";
 import { BrandingFAQ } from "./BrandingFAQ";
 
 export const metadata: Metadata = {
-  title: "Branding Agency in India | NOVEXA Agency",
+  title: "Branding Agency in India | Brand Identity Design | NOVEXA",
   description:
-    "NOVEXA is a branding agency helping growing businesses build clear, memorable brand identities through strategy, visual identity, logo design and consistent brand systems.",
+    "NOVEXA is a branding agency in India specializing in brand identity design, logo systems and visual guidelines for growing businesses.",
   alternates: {
     canonical: "https://novexaagency.com/branding/",
   },
   openGraph: {
-    title: "Branding Agency in India | NOVEXA Agency",
+    title: "Branding Agency in India | Brand Identity Design | NOVEXA",
     description:
-      "NOVEXA is a branding agency helping growing businesses build clear, memorable brand identities through strategy, visual identity, logo design and consistent brand systems.",
+      "NOVEXA is a branding agency in India specializing in brand identity design, logo systems and visual guidelines for growing businesses.",
     url: "https://novexaagency.com/branding/",
     siteName: "NOVEXA",
     images: [
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Branding Agency in India | NOVEXA Agency",
+    title: "Branding Agency in India | Brand Identity Design | NOVEXA",
     description:
-      "NOVEXA is a branding agency helping growing businesses build clear, memorable brand identities through strategy, visual identity, logo design and consistent brand systems.",
+      "NOVEXA is a branding agency in India specializing in brand identity design, logo systems and visual guidelines for growing businesses.",
     images: ["/assets/work/logo/hand tag nirvaan.jpg"],
   },
 };
@@ -328,7 +328,7 @@ export default function BrandingServicePage() {
       },
     ],
     description:
-      "NOVEXA is a branding agency helping growing businesses build clear, memorable brand identities through strategy, visual identity, logo design and consistent brand systems.",
+      "NOVEXA is a branding agency in India specializing in brand identity design, logo systems and visual guidelines for growing businesses.",
   };
 
   const breadcrumbSchema = {
@@ -399,7 +399,7 @@ export default function BrandingServicePage() {
             </h1>
 
             <p className="font-sans text-base md:text-lg text-stone-700 max-w-2xl font-light leading-relaxed">
-              NOVEXA is a dedicated branding agency in India helping growing businesses craft distinctive, enduring brand identities. We combine strategic market positioning, mathematical logo design, and unified visual systems so your business commands authority and lasting recognition.
+              NOVEXA is a branding agency in India helping growing businesses craft distinctive, enduring brand identities. As a brand identity design agency and strategic branding company, we combine market positioning, custom logo systems, and unified visual guidelines so your business commands authority and lasting recognition.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -528,7 +528,7 @@ export default function BrandingServicePage() {
             </h2>
           </div>
           <p className="font-sans text-sm text-stone-600 max-w-md font-light">
-            End-to-end brand design agency capabilities grounded in research, meticulous craftsmanship, and digital-first execution.
+            End-to-end branding services and brand identity design capabilities—grounded in strategic positioning, custom logo systems, visual identity frameworks, and comprehensive brand guidelines.
           </p>
         </div>
 
@@ -765,7 +765,7 @@ export default function BrandingServicePage() {
               Why Choose NOVEXA as Your Branding Agency
             </h2>
             <p className="font-sans text-base text-stone-700 font-light leading-relaxed">
-              Based in Vadodara, Gujarat, NOVEXA operates as a strategic branding agency partner for companies throughout Gujarat (Ahmedabad, Surat, Vadodara), across India, and worldwide. We believe world-class branding requires intimate founder collaboration, commercial discipline, and obsessive craft.
+              Based in Vadodara, Gujarat, NOVEXA operates as a dedicated branding agency partner for growing businesses across Gujarat, throughout India, and worldwide. We believe world-class branding requires more than standalone logo design—we approach every project as an interconnected brand identity system built with strategic discipline, refined aesthetics, and obsessive craft.
             </p>
           </div>
 
