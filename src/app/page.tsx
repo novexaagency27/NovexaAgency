@@ -12,17 +12,17 @@ import { projectsData } from "@/lib/data/projects";
 import { siteConfig } from "@/lib/data/siteConfig";
 
 export const metadata: Metadata = {
-  title: "NOVEXA | Creative Digital Agency for Design, Social Media & Websites",
+  title: "NOVEXA Agency | Creative & Digital Agency in India",
   description:
-    "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
+    "NOVEXA is a creative and digital agency helping growing businesses with graphic design, branding, social media, website design and digital experiences.",
   alternates: {
-    canonical: "https://novexaagency.com",
+    canonical: "https://novexaagency.com/",
   },
   openGraph: {
-    title: "NOVEXA | Creative Digital Agency for Design, Social Media & Websites",
+    title: "NOVEXA Agency | Creative & Digital Agency in India",
     description:
-      "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
-    url: "https://novexaagency.com",
+      "NOVEXA is a creative and digital agency helping growing businesses with graphic design, branding, social media, website design and digital experiences.",
+    url: "https://novexaagency.com/",
     siteName: "NOVEXA",
     images: [
       {
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NOVEXA | Creative Digital Agency for Design, Social Media & Websites",
+    title: "NOVEXA Agency | Creative & Digital Agency in India",
     description:
-      "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
+      "NOVEXA is a creative and digital agency helping growing businesses with graphic design, branding, social media, website design and digital experiences.",
     images: ["/assets/work/ui-ux/anaqah page.png"],
   },
 };

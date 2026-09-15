@@ -29,13 +29,13 @@ const fontMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://novexaagency.com"),
   title: {
-    default: "NOVEXA | Creative Digital Agency for Design, Social Media & Websites",
+    default: "NOVEXA Agency | Creative & Digital Agency in India",
     template: "%s",
   },
   description:
-    "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
+    "NOVEXA is a creative and digital agency helping growing businesses with graphic design, branding, social media, website design and digital experiences.",
   alternates: {
-    canonical: "https://novexaagency.com",
+    canonical: "https://novexaagency.com/",
   },
   keywords: [
     "NOVEXA",
@@ -55,10 +55,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://novexaagency.com",
-    title: "NOVEXA | Creative Digital Agency for Design, Social Media & Websites",
+    url: "https://novexaagency.com/",
+    title: "NOVEXA Agency | Creative & Digital Agency in India",
     description:
-      "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
+      "NOVEXA is a creative and digital agency helping growing businesses with graphic design, branding, social media, website design and digital experiences.",
     siteName: "NOVEXA",
     images: [
       {
@@ -71,9 +71,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NOVEXA | Creative Digital Agency for Design, Social Media & Websites",
+    title: "NOVEXA Agency | Creative & Digital Agency in India",
     description:
-      "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
+      "NOVEXA is a creative and digital agency helping growing businesses with graphic design, branding, social media, website design and digital experiences.",
     images: ["/assets/work/ui-ux/anaqah page.png"],
   },
   robots: {
@@ -99,10 +99,10 @@ export default function RootLayout({
     "@type": "Organization",
     name: "NOVEXA AGENCY",
     alternateName: "NOVEXA",
-    url: "https://novexaagency.com",
+    url: "https://novexaagency.com/",
     logo: "https://novexaagency.com/assets/work/logo/MAIN.jpg",
     description:
-      "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
+      "NOVEXA is a creative and digital agency helping growing businesses with graphic design, branding, social media, website design and digital experiences.",
     email: siteConfig.contact.email,
     telephone: siteConfig.contact.whatsappNumber,
     sameAs: [
@@ -127,9 +127,9 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "NOVEXA",
-    url: "https://novexaagency.com",
+    url: "https://novexaagency.com/",
     description:
-      "NOVEXA is a creative digital agency helping brands grow through graphic design, social media, UI/UX, branding and website development.",
+      "NOVEXA is a creative and digital agency helping growing businesses with graphic design, branding, social media, website design and digital experiences.",
   };
 
   return (
