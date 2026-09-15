@@ -108,6 +108,7 @@ export default function RootLayout({
     sameAs: [
       siteConfig.contact.instagramUrl,
       siteConfig.contact.whatsappUrl,
+      "https://www.linkedin.com/company/novexa-agency/",
     ],
     founder: [
       {
